@@ -16,4 +16,6 @@ server.get("/", (req, res) => {
 
 function logger(req, res, next) {}
 
+server.use(logger);
+
 module.exports = server;
