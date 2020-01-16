@@ -1,5 +1,7 @@
 const express = require("express");
 
+const cors = require("cors");
+
 const server = express();
 
 const userRouter = require("./users/userRouter");
@@ -8,7 +10,7 @@ const postRouter = require("./posts/postRouter");
 
 server.use(express.json());
 
-server.get("/", (req, res) => {
+server.get("/", cors(), (req, res) => {
   res.send(`<h2>Welcome to the LOTR API!</h2>`);
 });
 

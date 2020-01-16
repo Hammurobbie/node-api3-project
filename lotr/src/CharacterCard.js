@@ -7,7 +7,6 @@ const CharacterCard = props => {
       .delete(`https://api-hosting-test.herokuapp.com/users/${id}`)
       .then(res => {
         console.log(res);
-        window.location.reload();
       })
       .catch(err => console.log(err.message));
   };
