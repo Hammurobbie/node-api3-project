@@ -7,16 +7,22 @@ const CharacterCard = props => {
       .delete(`https://api-hosting-test.herokuapp.com/users/${id}`)
       .then(res => {
         console.log(res);
+        window.location.reload();
       })
       .catch(err => console.log(err.message));
   };
 
   return (
     <div>
-      <h1>{props.data.name}</h1>
-      <p>bio: {props.data.bio}</p>
-      <button>edit</button>
-      <button onClick={() => handleDelete(props.data.id)}>delete</button>
+      <h1>{props.user.name}</h1>
+      <button
+        onClick={() =>
+          props.charProps.history.push(`/edit-user/${props.data.id}`)
+        }
+      >
+        edit
+      </button>
+      <button onClick={() => handleDelete(props.user.id)}>delete</button>
     </div>
   );
 };

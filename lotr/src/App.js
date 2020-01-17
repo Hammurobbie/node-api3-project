@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./App.css";
-import CharacterCard from "./CharacterCard";
+import { Route } from "react-router-dom";
+
+import CharacterList from "./CharacterList";
+import AddUser from "./AddUser";
+import EditUser from "./EditUser";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://api-hosting-test.herokuapp.com/users")
-      .then(res => {
-        console.log(res.data);
-        setCharacters(res.data);
-        console.log(characters);
-      })
-      .catch(err => console.log(err.message));
-  }, [characters]);
-
   return (
     <div className="App">
-      {characters.map(char => (
-        <CharacterCard key={char.id} data={char} />
-      ))}
+      <Route exact path="/" component={CharacterList} />
+      <Route path="/edit-user/:id" component={EditUser} />
+      <Route path="/add-user" component={AddUser} />
     </div>
   );
 }
